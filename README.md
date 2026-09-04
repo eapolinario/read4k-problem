@@ -21,12 +21,13 @@ This pattern exercises:
 .
 ├── README.md
 ├── flake.nix
-├── Justfile
 ├── .envrc
 ├── .gitignore
 ├── go/
+│   ├── Justfile
 │   └── ...
 ├── python/
+│   ├── Justfile
 │   └── ...
 └── docs/
     └── ...
@@ -43,10 +44,18 @@ nix develop
 # direnv allow
 ```
 
-Then use the provided Just recipes:
+Then use the language-local Just recipes:
 
 ```bash
+cd go
 just build
+just test
+just run
+just fmt
+just lint
+
+cd ../python
+just setup
 just test
 just run
 just fmt
@@ -59,15 +68,15 @@ just lint
 
 ```bash
 cd go
-go run .
+just run
 ```
 
 ### Python
 
 ```bash
 cd python
-uv sync
-uv run python main.py
+just setup
+just run
 ```
 
 ## Notes

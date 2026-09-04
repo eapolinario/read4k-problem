@@ -1,0 +1,29 @@
+set shell := ["bash", "-c"]
+
+# List available recipes
+default:
+    @just --list
+
+# Build the Go package
+build:
+    go build .
+
+# Run tests
+test:
+    go test ./...
+
+# Run the project
+run:
+    go run .
+
+# Format source code
+fmt:
+    gofmt -w .
+
+# Lint / static analysis
+lint:
+    golangci-lint run
+
+# Remove build artifacts
+clean:
+    rm -rf ./bin ./tmp

@@ -1,0 +1,29 @@
+set shell := ["bash", "-c"]
+
+# List available recipes
+default:
+    @just --list
+
+# Install Python dependencies
+setup:
+    uv sync
+
+# Run tests
+test:
+    uv run pytest -q
+
+# Run the project
+run:
+    uv run python main.py
+
+# Format source code
+fmt:
+    uv run ruff format .
+
+# Lint / static analysis
+lint:
+    uv run ruff check .
+
+# Remove generated artifacts
+clean:
+    rm -rf .pytest_cache .ruff_cache __pycache__ .venv

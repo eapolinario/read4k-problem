@@ -1,0 +1,4 @@
+packages: .
+
+-- All dependencies ship with GHC; no Hackage index is required.
+active-repositories: :none

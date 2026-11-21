@@ -1,0 +1,30 @@
+set shell := ["bash", "-c"]
+
+# List available recipes
+default:
+    @just --list
+
+# Build the library and executable using only bundled dependencies
+build:
+    cabal build --offline all
+
+# Run the test suite
+test:
+    cabal test --offline all --test-show-details=direct
+
+# Copy stdin to stdout; keep Cabal output out of the binary stream
+run:
+    @cabal run --offline -v0 exe:read4k
+
+# Format source code
+fmt:
+    fourmolu --mode inplace src/Read4K.hs app/Main.hs test/Main.hs
+
+# Lint and verify formatting
+lint:
+    hlint src app test
+    fourmolu --mode check src/Read4K.hs app/Main.hs test/Main.hs
+
+# Remove build artifacts
+clean:
+    cabal clean

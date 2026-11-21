@@ -21,6 +21,14 @@ build/
 .mypy_cache/
 uv.lock
 
+# Haskell
+dist-newstyle/
+*.hi
+*.o
+*.dyn_hi
+*.dyn_o
+.ghc.environment.*
+
 # Nix
 .direnv
 result

@@ -23,11 +23,17 @@
               pkgs.python314
               pkgs.ruff
               pkgs.pyright
+              pkgs.ghc
+              pkgs.cabal-install
+              pkgs.haskell-language-server
+              pkgs.haskellPackages.fourmolu
+              pkgs.hlint
+              pkgs.just
             ];
 
             shellHook = ''
               export PYTHONPATH="${pkgs.python314}/lib/python3.14"
-              echo "Go + Python 3.14 dev shell ready"
+              echo "Go + Python 3.14 + Haskell dev shell ready"
             '';
           };
         });
